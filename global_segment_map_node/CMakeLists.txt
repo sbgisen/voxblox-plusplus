@@ -7,6 +7,7 @@ if (NOT "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
 endif()
 
 find_package(catkin_simple REQUIRED)
+find_package(Boost REQUIRED COMPONENTS filesystem system thread)
 catkin_simple(ALL_DEPS_REQUIRED)
 
 set(WITH_APPROXMVBB OFF)
