@@ -8,6 +8,7 @@ endif()
 
 find_package(catkin_simple REQUIRED)
 find_package(Boost REQUIRED COMPONENTS filesystem system thread)
+find_package(PCL REQUIRED)
 catkin_simple(ALL_DEPS_REQUIRED)
 
 set(WITH_APPROXMVBB OFF)
@@ -44,7 +45,8 @@ endif()
 cs_add_library(${PROJECT_NAME}_library
   src/controller.cpp
 )
-target_link_libraries(${PROJECT_NAME}_library ${catkin_LIBRARIES} ${approxmvbb_catkin_LIBRARIES})
+target_link_libraries(${PROJECT_NAME}_library ${catkin_LIBRARIES} ${approxmvbb_catkin_LIBRARIES} ${PCL_LIBRARIES})
+target_include_directories(${PROJECT_NAME}_library PRIVATE ${PCL_INCLUDE_DIRS})
 
 cs_add_executable(${PROJECT_NAME}
   src/node.cpp
